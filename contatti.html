@@ -86,15 +86,6 @@
         <p class="form-msg bad" id="form-err" role="alert" hidden></p>
         <p class="note">Indirizzo diretto per il supporto: <a href="mailto:support@dblast.it">support@dblast.it</a>. I dati inviati servono solo a rispondere alla tua richiesta e vengono trasmessi tramite un servizio esterno di invio moduli.</p>
       </form>
-
-      <h3 style="margin:48px 0 16px">Problemi comuni</h3>
-      <div class="faq">
-        <details><summary>Errore «No module named 'scipy'» (o un altro modulo) all'avvio del backend</summary><p>L'ambiente virtuale non è attivo o mancano le dipendenze. Attiva <code>backend/.venv</code> e rilancia <code>pip install -r backend/requirements.txt</code>.</p></details>
-        <details><summary>La porta 5173, 8000 o 8080 è già occupata</summary><p>Un altro processo usa la porta: chiudilo. Per il backend puoi usare un'altra porta (<code>uvicorn backend.main:app --port 8001</code>), ma allora imposta di conseguenza <code>VITE_PROXY_TARGET</code> e <code>VITE_RISK_PROXY_TARGET</code>.</p></details>
-        <details><summary>Il canvas resta vuoto, o l'API risponde 409 «graph not built yet»</summary><p>Il backend è avviato ma nessun database è stato caricato. Connettiti dal form di connessione del frontend (serve il kernel), oppure avvia il backend con <code>DBLAST_SEED_MOCK=1</code> per precaricare i dati di prova.</p></details>
-        <details><summary>Errore di rete in connessione</summary><p>Il kernel non è raggiungibile su <code>DBLAST_KERNEL_URL</code> (di default <code>http://localhost:8080</code>): avvia il kernel con <code>kernel\kernel.bat</code>.</p></details>
-        <details><summary><code>pytest</code> non trova il modulo <code>backend</code></summary><p>Lancialo dalla radice del repository, non da <code>backend/</code>.</p></details>
-      </div>
     </div>
   </section>
 
