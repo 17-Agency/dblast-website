@@ -81,6 +81,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .prose{max-width:68ch}
 .prose p{margin:0 0 14px;color:var(--muted)}
 .prose p strong{color:var(--text)}
+.prose h2{font-size:1.35rem;margin:36px 0 10px}
+.prose h2:first-child{margin-top:0}
 .cards.two{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .list{margin:0;padding-left:1.2em;color:var(--muted)}
 .list li{margin-bottom:6px}
