@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dblast.it/sitemap.xml
+Sitemap: https://www.dblast.it/sitemap.xml
