@@ -125,3 +125,15 @@ button.btn:disabled{opacity:.6;cursor:progress}
 .form-msg.ok{border-left-color:var(--ok)}
 .form-msg.bad{border-left-color:var(--danger)}
 .form-msg[hidden],.err[hidden]{display:none}
+
+/* modulo beta */
+fieldset.field{border:0;padding:0;margin:0}
+fieldset.field legend{font-weight:600;padding:0}
+.hint{margin:0 0 10px;color:var(--muted);font-size:.92rem}
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:6px 14px;background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.checks.single{display:block}
+.checks.single .check{align-items:flex-start}
+.checks[aria-invalid=true]{border-color:var(--danger)}
+.field .check{display:flex;align-items:center;gap:9px;font-weight:400;margin-bottom:0;cursor:pointer}
+.field .check input{width:auto;margin:0;accent-color:var(--brand)}
+.field .check input:focus-visible{outline:2px solid var(--brand-2);outline-offset:2px}
