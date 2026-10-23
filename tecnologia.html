@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tecnologia - DBlast</title>
+<meta name="description" content="Come funziona DBlast nel dettaglio: simulazione di modifiche DDL, grafo dello schema, database supportati (PostgreSQL, Oracle, Db2), architettura e stack.">
+<meta name="theme-color" content="#0b0c14">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.dblast.it/tecnologia.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tecnologia - DBlast">
+<meta property="og:description" content="Per sviluppatori e DBA: funzioni, architettura e stack di DBlast.">
+<meta property="og:url" content="https://www.dblast.it/tecnologia.html">
+<meta property="og:image" content="https://www.dblast.it/assets/risk.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo.png" alt="DBlast - Home" width="142" height="36"></a>
+    <nav aria-label="Principale">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="prodotti.html">Prodotti</a></li>
+        <li><a href="tecnologia.html" aria-current="page">Tecnologia</a></li>
+        <li><a href="servizi.html">Servizi</a></li>
+        <li><a href="chi-siamo.html">Chi siamo</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="pill">Per sviluppatori e DBA</span>
+      <h1>Sotto il cofano.</h1>
+      <p class="lead">Come funziona DBlast nel dettaglio: cosa analizza, quali modifiche DDL simula, su quali database lavora e con quali tecnologie è costruito.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Funzioni nel dettaglio</h2>
+      <p class="sub">Cosa fa l'ultima versione alpha.</p>
+      <div class="cards">
+        <article class="card"><span class="tag">Grafo</span><h3>Lo schema come grafo</h3><p>Tabelle e chiavi esterne diventano un grafo navigabile. Le tabelle vicine vengono raggruppate con un algoritmo di community detection: puoi rinominare i gruppi e spostare le tabelle da un gruppo all'altro.</p></article>
+        <article class="card"><span class="tag">Impatto</span><h3>Simulazione di modifiche DDL</h3><p>DROP TABLE, DROP COLUMN, cambio di tipo, rinomina, nuova chiave esterna, cambio di chiave primaria o di nullabilità. Il report elenca problemi potenziali, effetti automatici e lo script SQL della modifica, con un punteggio di rischio e i passi consigliati.</p></article>
+        <article class="card"><span class="tag">Revisione</span><h3>Check schema</h3><p>Passa in rassegna l'intero database e segnala nomi poco chiari, duplicazioni e violazioni delle forme normali. Sono avvisi di stile, tenuti distinti dai rischi strutturali.</p></article>
+        <article class="card"><span class="tag">Oggetti</span><h3>Oggetti e routine</h3><p>Un albero con schemi, tabelle, viste, viste materializzate, routine e sequenze. Se cambi una colonna usata da una routine, il rischio lo segnala.</p></article>
+      </div>
+      <ul class="more" aria-label="Altre funzioni">
+        <li>Ricerca rapida Ctrl+K</li>
+        <li>Storico delle simulazioni</li>
+        <li>Interfaccia in italiano e inglese</li>
+        <li>App desktop con aggiornamenti automatici</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <h2>Database supportati</h2>
+      <ul class="more" aria-label="Database supportati" style="margin-top:20px">
+        <li>PostgreSQL</li>
+        <li>Oracle</li>
+        <li>Db2 for LUW</li>
+      </ul>
+      <p class="note" style="margin-top:20px">Per ora DBlast supporta solo database relazionali. I database documentali e non relazionali sono fuori dal perimetro attuale e non sono in programma a breve.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Architettura</h2>
+      <p class="sub">Quattro componenti, ognuno con un compito solo.</p>
+      <ol class="flow">
+        <li><b>Database</b><span>PostgreSQL, Oracle o Db2 for LUW.</span></li>
+        <li><b>Kernel</b><span>Legge lo schema e produce lo Schema IR, un formato comune con versione (hash).</span></li>
+        <li><b>Backend</b><span>Costruisce il grafo in memoria, calcola i gruppi e simula l'impatto delle modifiche.</span></li>
+        <li><b>Frontend</b><span>Canvas del grafo e pannello del rischio, nel browser o come app desktop.</span></li>
+      </ol>
+      <p class="note">DBlast lavora sui metadati dello schema: le simulazioni non eseguono nulla sul database. Il rischio strutturale (cosa si rompe davvero) è calcolato in modo deterministico ed è separato dagli avvisi di stile, che restano consigli.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <h2>Stack tecnologico</h2>
+      <div class="stack" style="margin-top:28px">
+        <dl><dt>Kernel</dt><dd>Java 21, Quarkus</dd></dl>
+        <dl><dt>Backend</dt><dd>Python, FastAPI, NetworkX</dd></dl>
+        <dl><dt>Frontend</dt><dd>React 19, Vite, React Flow, ELK per il layout</dd></dl>
+        <dl><dt>Desktop</dt><dd>Electron, con kernel e backend inclusi</dd></dl>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Stato e roadmap tecnica</h2>
+      <div class="status">
+        <h3>Ultima versione: v0.2.2-alpha.1 (22 ottobre 2026)</h3>
+        <p>DBlast è in sviluppo attivo e cambia spesso. Non è ancora disponibile per il download.</p>
+      </div>
+      <div class="cards" style="margin-top:24px">
+        <article class="card"><span class="tag">In valutazione</span><h3>Spiegazioni con AI</h3><p>Un livello che trasforma il report di una simulazione in spiegazioni operative per DBA e decisori. Il rischio resta calcolato in modo deterministico: l'AI non lo ricalcola. Non ancora implementato.</p></article>
+        <article class="card"><span class="tag">In valutazione</span><h3>Client database multi-dialetto</h3><p>Una bozza di specifica prevede un uso come client: profili di connessione, sessioni, esecuzione di script ed esplorazione dei risultati.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="competenze" class="alt">
+    <div class="wrap">
+      <h2>Competenze per le collaborazioni</h2>
+      <p class="sub">Le tecnologie con cui lavoriamo anche fuori da DBlast.</p>
+      <div class="stack">
+        <dl><dt>Backend e API</dt><dd>FastAPI, Spring Boot, Quarkus</dd></dl>
+        <dl><dt>AI</dt><dd>Integrazione di LLM, ad esempio con AWS Bedrock</dd></dl>
+        <dl><dt>Real-time</dt><dd>WebSocket</dd></dl>
+        <dl><dt>Frontend</dt><dd>React</dd></dl>
+        <dl><dt>Dati</dt><dd>PostgreSQL, Oracle, analisi di schemi</dd></dl>
+        <dl><dt>Infrastruttura</dt><dd>Docker, AWS</dd></dl>
+      </div>
+      <p class="note" style="margin-top:24px">Hai un progetto? Vai alla pagina <a href="servizi.html">Servizi</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 DBlast · Progetto indipendente · non è ancora una società</span>
+  </div>
+</footer>
+</body>
+</html>

@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Chi siamo - DBlast</title>
-<meta name="description" content="DBlast è un progetto indipendente, portato avanti da un piccolo gruppo di sviluppatori con competenze di backend, AI e dati. Non è ancora una società.">
+<meta name="description" content="DBlast è un progetto indipendente di quattro sviluppatori appassionati di software, dati e intelligenza artificiale.">
 <meta name="theme-color" content="#0b0c14">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://www.dblast.it/chi-siamo.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Chi siamo - DBlast">
-<meta property="og:description" content="Un progetto indipendente, portato avanti da un piccolo gruppo di sviluppatori.">
+<meta property="og:description" content="Quattro sviluppatori, un progetto indipendente.">
 <meta property="og:url" content="https://www.dblast.it/chi-siamo.html">
 <meta property="og:image" content="https://www.dblast.it/assets/risk.png">
 <meta property="og:locale" content="it_IT">
@@ -22,11 +22,12 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/logo-icon.svg" alt="" width="30" height="30">DBlast</a>
+    <a class="brand" href="index.html"><img src="assets/logo.png" alt="DBlast - Home" width="142" height="36"></a>
     <nav aria-label="Principale">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="prodotti.html">Prodotti</a></li>
+        <li><a href="tecnologia.html">Tecnologia</a></li>
         <li><a href="servizi.html">Servizi</a></li>
         <li><a href="chi-siamo.html" aria-current="page">Chi siamo</a></li>
         <li><a href="contatti.html">Contatti</a></li>
@@ -39,8 +40,8 @@
   <section class="page-hero">
     <div class="wrap">
       <span class="pill">Chi siamo</span>
-      <h1>Un progetto indipendente, fatto da sviluppatori.</h1>
-      <p class="lead">DBlast nasce e cresce come progetto indipendente di un piccolo gruppo di sviluppatori. Non è (ancora) una società: è un progetto in sviluppo, con uno stato dichiarato apertamente.</p>
+      <h1>Quattro sviluppatori, un'idea chiara.</h1>
+      <p class="lead">DBlast nasce da un problema che conosciamo bene: modificare un database e scoprire troppo tardi di aver rotto qualcosa. Abbiamo deciso di risolverlo.</p>
     </div>
   </section>
 
@@ -48,33 +49,33 @@
     <div class="wrap">
       <h2>Il team</h2>
       <div class="prose">
-        <p>Siamo in quattro, sviluppatori con un'impostazione orientata a <strong>backend, intelligenza artificiale e dati</strong>. Lavoriamo con Java e Quarkus, Python e FastAPI, React, PostgreSQL e Oracle. Ognuno segue una parte del prodotto; preferiamo che a parlare siano il codice e il lavoro fatto.</p>
-        <p><strong>Natura del progetto.</strong> DBlast è un progetto indipendente. Non siamo una società registrata e non presentiamo il sito come l'attività di un'azienda.</p>
+        <p>Siamo un piccolo gruppo di sviluppatori appassionati di <strong>software, dati e intelligenza artificiale</strong>. Ognuno segue una parte del prodotto e preferiamo che a parlare sia il lavoro fatto.</p>
+        <p>DBlast è un <strong>progetto indipendente</strong>: non siamo (ancora) una società.</p>
       </div>
       <ul class="team" aria-label="Le persone del team">
         <li class="member">
           <span class="avatar" aria-hidden="true">CA</span>
           <h3>Carmine</h3>
-          <p class="role">Frontend e lead del progetto</p>
-          <p>Porta nell'app il canvas del grafo e il pannello del rischio, e coordina il progetto.</p>
+          <p class="role">Interfaccia e coordinamento</p>
+          <p>Disegna quello che vedi nell'app, dalla mappa al report del rischio, e coordina il progetto.</p>
         </li>
         <li class="member">
           <span class="avatar" aria-hidden="true">VA</span>
           <h3>Valerio</h3>
-          <p class="role">Graph e infrastrutture</p>
-          <p>Costruisce in memoria il grafo dello schema e calcola i gruppi di tabelle vicine.</p>
+          <p class="role">Mappa e infrastruttura</p>
+          <p>Trasforma il database in una mappa e raggruppa le parti collegate tra loro.</p>
         </li>
         <li class="member">
           <span class="avatar" aria-hidden="true">MA</span>
           <h3>Matteo</h3>
-          <p class="role">Rischio</p>
-          <p>Cura il motore che simula una modifica DDL e ne stima l'impatto, con punteggio e passi consigliati.</p>
+          <p class="role">Analisi del rischio</p>
+          <p>Cura il motore che prevede l'effetto di una modifica e suggerisce cosa fare.</p>
         </li>
         <li class="member">
           <span class="avatar" aria-hidden="true">CH</span>
           <h3>Christian</h3>
-          <p class="role">Kernel e AI</p>
-          <p>Cura il kernel che legge lo schema dei database PostgreSQL e Oracle e produce lo Schema IR, e implementa algoritmi di intelligenza artificiale per migliorare l'esperienza utente.</p>
+          <p class="role">Lettura dei database e AI</p>
+          <p>Fa sì che DBlast sappia leggere i database e usa l'intelligenza artificiale per rendere l'app più semplice da usare.</p>
         </li>
       </ul>
     </div>
@@ -82,23 +83,22 @@
 
   <section class="alt">
     <div class="wrap">
-      <h2>Come lavoriamo</h2>
-      <p class="sub">Tre principi che guidano ogni scelta tecnica.</p>
+      <h2>In cosa crediamo</h2>
       <div class="cards">
         <article class="card">
-          <span class="tag">Stabilità</span>
-          <h3>Stabilità prima dell'eleganza</h3>
-          <p>Pensiamo a sistemi che girano in produzione. Tra una soluzione elegante e una che regge, scegliamo quella che regge.</p>
+          <span class="tag">Affidabilità</span>
+          <h3>Prima di tutto, funzionare</h3>
+          <p>Costruiamo strumenti su cui contare. Tra una soluzione appariscente e una che regge, scegliamo quella che regge.</p>
         </article>
         <article class="card">
-          <span class="tag">Metodo</span>
-          <h3>Modifiche chirurgiche</h3>
-          <p>Cambiamo solo ciò che serve, senza riscritture e pulizie fuori scopo. Ogni modifica è piccola, leggibile e verificabile.</p>
+          <span class="tag">Semplicità</span>
+          <h3>Semplice da usare</h3>
+          <p>Un problema complicato non deve per forza avere una soluzione complicata. Puntiamo a strumenti che si capiscono al primo uso.</p>
         </article>
         <article class="card">
           <span class="tag">Trasparenza</span>
-          <h3>Onesti sullo stato del progetto</h3>
-          <p>DBlast è in alpha e lo diciamo. Cosa funziona, cosa manca e cosa è solo allo studio lo diciamo nella pagina <a href="prodotti.html">Prodotti</a>.</p>
+          <h3>Sinceri su dove siamo</h3>
+          <p>DBlast è in sviluppo e lo diciamo apertamente. Cosa funziona e cosa arriverà lo trovi nella pagina <a href="prodotti.html">Prodotti</a>.</p>
         </article>
       </div>
     </div>
@@ -108,8 +108,8 @@
     <div class="wrap">
       <h2>Da qui in avanti</h2>
       <div class="teasers">
-        <article class="card"><h3>Il prodotto</h3><p>Che cosa fa DBlast e a che punto è.</p><a class="go" href="prodotti.html">Vai ai prodotti</a></article>
-        <article class="card"><h3>Collaborazioni</h3><p>Se hai un problema vicino alle nostre competenze, ne parliamo.</p><a class="go" href="servizi.html">Vai ai servizi</a></article>
+        <article class="card"><h3>Il prodotto</h3><p>Che cosa fa DBlast e a che punto è.</p><a class="go" href="prodotti.html">Vai al prodotto</a></article>
+        <article class="card"><h3>Collaborazioni</h3><p>Hai un progetto? Ne parliamo volentieri.</p><a class="go" href="servizi.html">Vai ai servizi</a></article>
         <article class="card"><h3>Scrivici</h3><p>Supporto, segnalazioni o semplici domande.</p><a class="go" href="contatti.html">Vai ai contatti</a></article>
       </div>
     </div>

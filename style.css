@@ -18,7 +18,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--brand-2);outline-of
 header.top{position:sticky;top:0;z-index:5;background:rgb(11 12 20 / .85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;letter-spacing:.02em;color:var(--text);text-decoration:none}
-.brand img{width:30px;height:30px}
+.brand img{width:auto;height:36px}
 nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
 nav a{color:var(--muted);text-decoration:none;font-size:.95rem}
 nav a:hover{color:var(--text)}
@@ -86,7 +86,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .list{margin:0;padding-left:1.2em;color:var(--muted)}
 .list li{margin-bottom:6px}
 .teasers{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.teasers .card a.go{display:inline-block;margin-top:14px;font-weight:600}
+.teasers .card a.go{display:inline-block;margin-top:14px}
 .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;counter-reset:st}
 .steps li{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:20px;counter-increment:st}
 .steps li::before{content:counter(st);font:700 .85rem var(--mono);color:var(--brand-2)}
@@ -123,3 +123,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .avatar{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:var(--brand);color:#fff;border:2px solid var(--brand-2);font:700 1.1rem var(--font);letter-spacing:.04em}
 @media (max-width:1000px){.team{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.team{grid-template-columns:1fr}}
+
+/* link "vai a" */
+a.go{font-weight:600;text-decoration:none}
+a.go::after{content:" \2192"}
+a.go:hover{text-decoration:underline}
