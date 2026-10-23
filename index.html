@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DBlast - Database Intelligence &amp; Blast Radius</title>
+<meta name="description" content="DBlast mostra lo schema di un database come grafo e stima l'impatto di una modifica DDL prima di eseguirla. Progetto in alpha.">
+<meta name="theme-color" content="#0b0c14">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://dblast.it/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DBlast - Database Intelligence &amp; Blast Radius">
+<meta property="og:description" content="Esplora lo schema di un database come grafo e scopri cosa rompe una modifica DDL prima di eseguirla.">
+<meta property="og:url" content="https://dblast.it/">
+<meta property="og:image" content="https://dblast.it/assets/risk.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo-icon.svg" alt="" width="30" height="30">DBlast</a>
+    <nav aria-label="Principale">
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="prodotti.html">Prodotti</a></li>
+        <li><a href="servizi.html">Servizi</a></li>
+        <li><a href="chi-siamo.html">Chi siamo</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <span class="pill">Alpha · v0.2.2</span>
+      <h1>Sai cosa si rompe <em>prima</em> di toccare lo schema.</h1>
+      <p class="lead">DBlast legge lo schema del tuo database e lo mostra come grafo. Poi simula una modifica DDL e ti dice quali tabelle, vincoli e routine ne risentono, con un punteggio di rischio e i passi consigliati.</p>
+      <div class="cta">
+        <a class="btn" href="#schermate">Guarda le schermate</a>
+        <span class="note">Download non ancora disponibile: prossimamente.</span>
+      </div>
+      <div class="shot">
+        <img src="assets/risk.png" width="1440" height="900" alt="DBlast: simulazione della rimozione di una colonna sulla tabella core.orders, con punteggio 85 di impatto molto alto e l'elenco dei problemi potenziali.">
+      </div>
+    </div>
+  </section>
+
+  <section id="cosa-fa">
+    <div class="wrap">
+      <h2>Cosa fa</h2>
+      <p class="sub">Un database cresce per anni e nessuno ricorda più chi dipende da cosa. DBlast rende quelle dipendenze visibili.</p>
+      <div class="cards">
+        <article class="card">
+          <span class="tag">Grafo</span>
+          <h3>Lo schema come mappa</h3>
+          <p>Tabelle e chiavi esterne diventano un grafo navigabile. Le tabelle vicine vengono raggruppate in gruppi (community detection): puoi rinominarli e spostare le tabelle da un gruppo all'altro.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Impatto</span>
+          <h3>Simulazione di modifiche DDL</h3>
+          <p>Prova DROP TABLE, DROP COLUMN, cambio di tipo, rinomina, nuova chiave esterna, cambio di chiave primaria o di nullabilità. Il report elenca problemi potenziali, effetti automatici e lo script SQL della modifica.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Revisione</span>
+          <h3>Controllo dello schema</h3>
+          <p>«Check schema» passa in rassegna l'intero database e segnala ciò che merita attenzione: nomi poco chiari, duplicazioni, forme normali. Sono avvisi, tenuti distinti dai rischi strutturali.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Esplora</span>
+          <h3>Oggetti e routine</h3>
+          <p>Un albero con schemi, tabelle, viste, viste materializzate, routine e sequenze. Se cambi una colonna usata da una routine, il rischio lo segnala.</p>
+        </article>
+      </div>
+      <ul class="more" aria-label="Altre funzioni">
+        <li>Ricerca rapida Ctrl+K</li>
+        <li>Storico delle simulazioni</li>
+        <li>Interfaccia in italiano e inglese</li>
+        <li>PostgreSQL, Oracle e Db2</li>
+        <li>App desktop con aggiornamenti automatici</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="schermate" style="background:var(--bg-2)">
+    <div class="wrap">
+      <h2>Le schermate</h2>
+      <p class="sub">Catture dell'app in modalità demo, su un piccolo database di esempio.</p>
+      <div class="gallery">
+        <figure>
+          <div class="shot"><img loading="lazy" src="assets/overview.png" width="1440" height="900" alt="Panoramica del database dblast_demo: 8 tabelle, 53 colonne, 9 chiavi esterne, riquadro del rischio e suggerimenti per i prossimi passi."></div>
+          <figcaption><strong>Panoramica</strong>Numeri chiave dello schema, risultati del controllo e prossimi passi suggeriti.</figcaption>
+        </figure>
+        <figure>
+          <div class="shot"><img loading="lazy" src="assets/graph.png" width="1440" height="900" alt="Mappa dello schema con due gruppi di tabelle colorati, auth_users e core_order_items, collegati da relazioni tratteggiate."></div>
+          <figcaption><strong>Mappa dello schema</strong>Le tabelle raggruppate per vicinanza, con le relazioni tra un gruppo e l'altro.</figcaption>
+        </figure>
+        <figure>
+          <div class="shot"><img loading="lazy" src="assets/detail.png" width="1440" height="900" alt="Vista di dettaglio della tabella core.orders con le tabelle collegate e l'albero degli oggetti a sinistra."></div>
+          <figcaption><strong>Vista di dettaglio</strong>Una tabella con le sue colonne e il suo vicinato di chiavi esterne.</figcaption>
+        </figure>
+        <figure>
+          <div class="shot"><img loading="lazy" src="assets/risk.png" width="1440" height="900" alt="Risk Inspector con il report di una modifica: punteggio 85, impatto molto alto, due problemi potenziali."></div>
+          <figcaption><strong>Risk Inspector</strong>Il risultato della simulazione: punteggio, problemi potenziali e passo successivo consigliato.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="come-funziona">
+    <div class="wrap">
+      <h2>Come funziona</h2>
+      <p class="sub">Quattro pezzi, ognuno con un compito solo.</p>
+      <ol class="flow">
+        <li><b>Database</b><span>PostgreSQL, Oracle o Db2 for LUW.</span></li>
+        <li><b>Kernel</b><span>Legge lo schema e produce lo Schema IR, un formato comune con versione (hash).</span></li>
+        <li><b>Backend</b><span>Costruisce il grafo in memoria, calcola i gruppi e simula l'impatto delle modifiche.</span></li>
+        <li><b>Frontend</b><span>Canvas del grafo e pannello del rischio, nel browser o come app desktop.</span></li>
+      </ol>
+      <p class="note">DBlast lavora sullo schema: le simulazioni non eseguono nulla sul tuo database. Il rischio strutturale (cosa si rompe davvero) è separato dagli avvisi di stile, che restano consigli.</p>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-2)">
+    <div class="wrap">
+      <h2>Tecnologie</h2>
+      <div class="stack" style="margin-top:28px">
+        <dl><dt>Kernel</dt><dd>Java 21, Quarkus</dd></dl>
+        <dl><dt>Backend</dt><dd>Python, FastAPI, NetworkX</dd></dl>
+        <dl><dt>Frontend</dt><dd>React 19, Vite, React Flow, ELK per il layout</dd></dl>
+        <dl><dt>Desktop</dt><dd>Electron, con kernel e backend inclusi</dd></dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="stato">
+    <div class="wrap">
+      <h2>Stato del progetto</h2>
+      <div class="status">
+        <h3>In alpha: ultima versione v0.2.2-alpha.1 (22 ottobre 2026)</h3>
+        <p>DBlast è in sviluppo attivo e cambia spesso. L'app non è ancora scaricabile: quando ci sarà una versione da provare, la troverai qui.</p>
+        <p>Per ricevere notizie sulle versioni o per provarla in anteprima, <a href="contatti.html#form">scrivici</a>.</p>
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--bg-2)">
+    <div class="wrap">
+      <h2>Vai oltre</h2>
+      <div class="teasers" style="margin-top:28px">
+        <article class="card"><h3>Prodotti</h3><p>Tutte le funzioni di DBlast, le schermate e cosa è in valutazione.</p><a class="go" href="prodotti.html">Scopri i prodotti</a></article>
+        <article class="card"><h3>Servizi</h3><p>Collaborazioni su richiesta, senza impegno: raccontaci il problema.</p><a class="go" href="servizi.html">Vedi i servizi</a></article>
+        <article class="card"><h3>Chi siamo</h3><p>Un progetto indipendente, fatto da un piccolo gruppo di sviluppatori.</p><a class="go" href="chi-siamo.html">Conosci il team</a></article>
+        <article class="card"><h3>Contatti</h3><p>Supporto per DBlast, segnalazioni e richieste di collaborazione.</p><a class="go" href="contatti.html">Scrivici</a></article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 DBlast · Progetto indipendente · non è ancora una società</span>
+  </div>
+</footer>
+</body>
+</html>
