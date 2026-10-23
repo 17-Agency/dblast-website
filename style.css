@@ -25,7 +25,6 @@ nav a:hover{color:var(--text)}
 nav a[aria-current=page]{color:var(--text);box-shadow:inset 0 -2px 0 var(--brand-2);padding-bottom:4px}
 
 .hero{padding:84px 0 56px;background:radial-gradient(900px 420px at 70% -10%,rgb(45 81 158 / .35),transparent 70%)}
-.pill{display:inline-block;font:600 .8rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--warn);border:1px solid rgb(217 180 74 / .4);padding:4px 12px;border-radius:99px}
 h1{font-size:clamp(2.2rem,5.2vw,3.8rem);line-height:1.08;margin:20px 0 18px;letter-spacing:-.02em;max-width:18ch}
 h1 em{font-style:normal;color:var(--brand-2)}
 .lead{font-size:1.2rem;color:var(--muted);max-width:60ch;margin:0 0 28px}
