@@ -92,9 +92,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .steps li::before{content:counter(st);font:700 .85rem var(--mono);color:var(--brand-2)}
 .steps b{display:block;margin:4px 0}
 .steps span{color:var(--muted);font-size:.95rem}
-.faq details{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:14px 20px;margin-bottom:12px}
-.faq summary{cursor:pointer;font-weight:600}
-.faq details p{margin:10px 0 0;color:var(--muted)}
 .soon{display:inline-block;font:600 .8rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:4px 12px;border-radius:99px}
 
 @media (max-width:760px){
@@ -109,22 +106,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-/* modulo di contatto */
-.form{max-width:640px;margin-top:24px;display:grid;gap:18px}
-.field label{display:block;font-weight:600;margin-bottom:6px}
-.req{color:var(--warn)}
-.field input,.field select,.field textarea{width:100%;font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:11px 14px}
-.field textarea{resize:vertical;min-height:140px}
-.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:2px solid var(--brand-2);outline-offset:2px;border-color:var(--brand-2)}
-.field [aria-invalid=true]{border-color:var(--danger)}
-.err{margin:6px 0 0;color:var(--danger);font-size:.92rem}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-button.btn{border:0;font:inherit;font-weight:600;cursor:pointer}
-button.btn:disabled{opacity:.6;cursor:progress}
-.form-msg{margin:0;padding:12px 16px;border-radius:10px;border:1px solid var(--line);border-left-width:4px}
-.form-msg.ok{border-left-color:var(--ok)}
-.form-msg.bad{border-left-color:var(--danger)}
-.form-msg[hidden],.err[hidden]{display:none}
+/* esempi di email */
+.mail{max-width:680px;margin-top:24px;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px}
+.mail-label{margin:0 0 12px;font:600 .75rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--brand-2)}
+.mail dl{margin:0 0 14px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px}
+.mail dt{color:var(--muted)}
+.mail dd{margin:0;font-weight:600;overflow-wrap:anywhere}
+.mail pre{margin:0;padding-top:14px;border-top:1px solid var(--line);font:.92rem/1.6 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere}
 
 /* team */
 .team{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}

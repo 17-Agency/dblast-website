@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Contatti e supporto - DBlast</title>
-<meta name="description" content="Supporto per DBlast, segnalazione di bug, richieste di collaborazione e contatto generale: scrivici dal modulo o via email.">
+<meta name="description" content="Supporto per DBlast, segnalazione di bug, richieste di collaborazione e contatto generale: scrivici via email.">
 <meta name="theme-color" content="#0b0c14">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://dblast.it/contatti.html">
@@ -36,56 +36,44 @@
 </header>
 
 <main id="main">
-  <!-- Indirizzi email: support@dblast.it (supporto, destinatario del modulo), info@dblast.it (collaborazioni e contatto generale). -->
+  <!-- Indirizzi email: support@dblast.it (supporto), info@dblast.it (collaborazioni e contatto generale). -->
   <section class="page-hero">
     <div class="wrap">
       <span class="pill">Contatti</span>
       <h1>Supporto e contatti.</h1>
-      <p class="lead">Scrivici dal modulo per supporto, segnalazioni di bug o collaborazioni. Per domande generali puoi anche mandare una email.</p>
+      <p class="lead">Scrivici via email per supporto, segnalazioni di bug o collaborazioni, oppure per una domanda generale.</p>
     </div>
   </section>
 
   <section id="supporto">
     <div class="wrap">
-      <h2 id="form">Scrivici</h2>
+      <h2>Scrivici per il supporto</h2>
       <div class="prose">
-        <p>Per un bug descrivi cosa ti aspettavi, cosa è successo e la versione che usi. Ti rispondiamo via email.</p>
+        <p>Per supporto o segnalazioni scrivi a <a href="mailto:support@dblast.it?subject=%5BDBlast%5D%20Supporto">support@dblast.it</a>. Per aiutarci a capire il problema indica la versione di DBlast, il sistema operativo, cosa stavi facendo, il messaggio di errore esatto ed eventualmente uno screenshot.</p>
       </div>
-      <form id="contact-form" class="form" action="mailto:support@dblast.it" method="post" enctype="text/plain">
-        <div class="field">
-          <label for="f-nome">Nome</label>
-          <input id="f-nome" name="nome" type="text" autocomplete="name">
-        </div>
-        <div class="field">
-          <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
-          <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-err">
-          <p class="err" id="f-email-err" hidden></p>
-        </div>
-        <div class="field">
-          <label for="f-oggetto">Oggetto</label>
-          <select id="f-oggetto" name="oggetto">
-            <option value="supporto">Supporto DBlast</option>
-            <option value="bug">Segnalazione bug</option>
-            <option value="collaborazione">Collaborazione</option>
-            <option value="altro">Altro</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-messaggio">Messaggio <span class="req" aria-hidden="true">*</span></label>
-          <textarea id="f-messaggio" name="messaggio" rows="6" required aria-describedby="f-messaggio-err"></textarea>
-          <p class="err" id="f-messaggio-err" hidden></p>
-        </div>
-        <div class="hp" aria-hidden="true">
-          <label for="f-sito">Non compilare questo campo</label>
-          <input id="f-sito" name="sito" type="text" tabindex="-1" autocomplete="off">
-        </div>
-        <div class="cta">
-          <button class="btn" type="submit">Invia</button>
-        </div>
-        <p class="form-msg ok" id="form-ok" role="status" hidden></p>
-        <p class="form-msg bad" id="form-err" role="alert" hidden></p>
-        <p class="note">Indirizzo diretto per il supporto: <a href="mailto:support@dblast.it">support@dblast.it</a>. I dati inviati servono solo a rispondere alla tua richiesta e vengono trasmessi tramite un servizio esterno di invio moduli.</p>
-      </form>
+      <div class="mail" aria-label="Esempio di email di supporto">
+        <p class="mail-label">Esempio di email</p>
+        <dl>
+          <dt>A</dt><dd>support@dblast.it</dd>
+          <dt>Oggetto</dt><dd>[DBlast] Supporto: errore durante la connessione al database</dd>
+        </dl>
+        <pre>Ciao,
+
+versione di DBlast: [versione]
+sistema operativo: [sistema operativo]
+database: [PostgreSQL / Oracle, versione]
+
+Cosa stavo facendo:
+[descrizione dei passaggi]
+
+Messaggio di errore esatto:
+[testo dell'errore]
+
+Allego uno screenshot: [sì / no]
+
+Grazie,
+[nome]</pre>
+      </div>
     </div>
   </section>
 
@@ -95,9 +83,23 @@
       <div class="prose">
         <p>Hai un problema vicino alle aree descritte in <a href="servizi.html">Servizi</a>? Scrivici due righe: di che si tratta, in che contesto e che cosa ti serve. Valutiamo insieme se possiamo aiutarti. Nessun impegno.</p>
       </div>
+      <div class="mail" aria-label="Esempio di email di collaborazione">
+        <p class="mail-label">Esempio di email</p>
+        <dl>
+          <dt>A</dt><dd>info@dblast.it</dd>
+          <dt>Oggetto</dt><dd>Collaborazione / consulenza: [tema in breve]</dd>
+        </dl>
+        <pre>Ciao,
+
+chi siamo: [nome, ruolo o realtà, contesto]
+problema: [cosa ti serve e dove si inceppa]
+tempistiche indicative: [entro quando, se c'è una scadenza]
+
+Grazie,
+[nome]</pre>
+      </div>
       <div class="cta" style="margin-top:20px">
-        <a class="btn" href="?oggetto=collaborazione#form">Usa il modulo</a>
-        <a class="btn ghost" href="mailto:info@dblast.it?subject=Richiesta%20di%20collaborazione">Scrivi a info@dblast.it</a>
+        <a class="btn" href="mailto:info@dblast.it?subject=Richiesta%20di%20collaborazione">Scrivi a info@dblast.it</a>
       </div>
     </div>
   </section>
@@ -117,6 +119,5 @@
     <span>© 2026 DBlast · Progetto indipendente · non è ancora una società</span>
   </div>
 </footer>
-<script src="form.js"></script>
 </body>
 </html>
