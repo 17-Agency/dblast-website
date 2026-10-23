@@ -144,68 +144,10 @@
       <div class="status">
         <h3>In alpha: ultima versione v0.2.2-alpha.1 (22 ottobre 2026)</h3>
         <p>DBlast è in sviluppo attivo e cambia spesso. L'app non è ancora scaricabile: quando ci sarà una versione da provare, la troverai qui.</p>
-        <p>Per ricevere notizie sulle versioni o per provarla in anteprima, <a href="#beta">iscriviti alla beta</a>.</p>
+        <p>Per ricevere notizie sulle versioni o per provarla in anteprima, <a href="contatti.html#form">scrivici</a>.</p>
       </div>
     </div>
   </section>
-
-  <section id="beta">
-    <div class="wrap">
-      <h2>Prova DBlast in anteprima</h2>
-      <p class="sub">Lascia i tuoi dati per entrare nella lista della beta. Ti scriviamo via email quando c'è una versione da provare, e niente altro.</p>
-      <form id="beta-form" class="form" novalidate>
-        <div class="field">
-          <label for="b-nome">Nome <span class="req" aria-hidden="true">*</span></label>
-          <input id="b-nome" name="nome" type="text" autocomplete="name" required aria-describedby="b-nome-err">
-          <p class="err" id="b-nome-err" hidden></p>
-        </div>
-        <div class="field">
-          <label for="b-email">Email <span class="req" aria-hidden="true">*</span></label>
-          <input id="b-email" name="email" type="email" autocomplete="email" required aria-describedby="b-email-err">
-          <p class="err" id="b-email-err" hidden></p>
-        </div>
-        <fieldset class="field">
-          <legend>Quali database usi? <span class="req" aria-hidden="true">*</span></legend>
-          <p class="hint">Puoi sceglierne più di uno.</p>
-          <div class="checks" id="b-database">
-            <label class="check"><input type="checkbox" name="database" value="PostgreSQL">PostgreSQL</label>
-            <label class="check"><input type="checkbox" name="database" value="MySQL/MariaDB">MySQL / MariaDB</label>
-            <label class="check"><input type="checkbox" name="database" value="MongoDB">MongoDB</label>
-            <label class="check"><input type="checkbox" name="database" value="SQL Server">SQL Server</label>
-            <label class="check"><input type="checkbox" name="database" value="SQLite">SQLite</label>
-            <label class="check"><input type="checkbox" name="database" value="Oracle">Oracle</label>
-            <label class="check"><input type="checkbox" name="database" value="Redis">Redis</label>
-            <label class="check"><input type="checkbox" name="database" value="DynamoDB">DynamoDB</label>
-            <label class="check"><input type="checkbox" name="database" value="Cassandra">Cassandra</label>
-            <label class="check"><input type="checkbox" name="database" value="Firebird">Firebird</label>
-            <label class="check"><input type="checkbox" name="database" value="Altro">Altro (indica nelle note)</label>
-          </div>
-          <p class="err" id="b-database-err" hidden></p>
-        </fieldset>
-        <div class="field">
-          <label for="b-note">Note</label>
-          <textarea id="b-note" name="note" rows="4" placeholder="Facoltativo: contesto, dimensione dello schema, cosa vorresti provare."></textarea>
-        </div>
-        <div class="field">
-          <div class="checks single">
-            <label class="check"><input type="checkbox" id="b-consenso" name="consenso" required aria-describedby="b-consenso-err">Accetto di essere contattato via email in merito alla beta <span class="req" aria-hidden="true">*</span></label>
-          </div>
-          <p class="err" id="b-consenso-err" hidden></p>
-        </div>
-        <div class="hp" aria-hidden="true">
-          <label for="b-sito">Non compilare questo campo</label>
-          <input id="b-sito" name="sito" type="text" tabindex="-1" autocomplete="off">
-        </div>
-        <div class="cta">
-          <button class="btn" type="submit">Richiedi l'accesso</button>
-        </div>
-        <p class="form-msg ok" id="beta-ok" role="status" hidden></p>
-        <p class="form-msg bad" id="beta-err" role="alert" hidden></p>
-        <p class="note">Usiamo i tuoi dati solo per contattarti sulla beta e per capire quali database supportare. Puoi chiedere la rimozione scrivendo a <a href="mailto:info@dblast.it">info@dblast.it</a>.</p>
-      </form>
-    </div>
-  </section>
-
   <section style="background:var(--bg-2)">
     <div class="wrap">
       <h2>Vai oltre</h2>
@@ -224,6 +166,5 @@
     <span>© 2026 DBlast · Progetto indipendente · non è ancora una società</span>
   </div>
 </footer>
-<script src="beta.js"></script>
 </body>
 </html>

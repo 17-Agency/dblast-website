@@ -2,10 +2,11 @@
   'use strict';
 
   // ---------------------------------------------------------------
-  // CONFIGURAZIONE: incolla qui l'URL della Web App di Google Apps Script
-  // ('https://script.google.com/macros/s/<ID>/exec'), lo stesso di beta.js.
+  // CONFIGURAZIONE: incolla qui l'endpoint del servizio di invio moduli
+  // (formato Formspree: 'https://formspree.io/f/<ID>'). Il destinatario
+  // (support@dblast.it) si imposta nella dashboard del servizio, non qui.
   // Se resta vuoto, il modulo apre il programma di posta (mailto:).
-  var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwS0B20FiIkdWYL01oX1Tr_jAuLS-k7iu0GUJnpgV5KSf7mXVUaDBymT_A5KoxLty-V/exec';
+  var FORM_ENDPOINT = '';
   // ---------------------------------------------------------------
 
   var SUPPORT_EMAIL = 'support@dblast.it';
@@ -102,23 +103,18 @@
   function sendToEndpoint() {
     button.disabled = true;
     var payload = {
-      tipo: 'contatto',
       nome: fields.nome.value.trim(),
       email: fields.email.value.trim(),
       oggetto: subjectText(),
       messaggio: fields.messaggio.value.trim(),
-      sito: fields.sito.value
+      _subject: '[DBlast] ' + subjectText()
     };
-    // text/plain: evita la preflight CORS che Google Apps Script non gestisce.
     return fetch(FORM_ENDPOINT, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(payload)
     }).then(function (response) {
       if (!response.ok) throw new Error('HTTP ' + response.status);
-      return response.json().catch(function () { return { ok: true }; });
-    }).then(function (result) {
-      if (result && result.ok === false) throw new Error('errore server');
       form.reset();
       okBox.textContent = 'Messaggio inviato. Grazie, ti risponderemo via email.';
       okBox.hidden = false;
