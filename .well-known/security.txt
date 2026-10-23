@@ -1,0 +1,4 @@
+Contact: mailto:info@dblast.it
+Expires: 2027-10-23T00:00:00.000Z
+Preferred-Languages: it, en
+Canonical: https://www.dblast.it/.well-known/security.txt
