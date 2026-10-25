@@ -14,14 +14,17 @@
  *     che ti mostra. Non toccano Zoho: la posta in arrivo resta com'è.
  *     Quando il dominio risulta "Verified", crea una API key con permesso
  *     "Sending access" (API Keys > Create API key) e copiala.
- *  2. Apri il foglio Google delle iscrizioni (o creane uno nuovo).
+ *  2. Apri il foglio Google delle iscrizioni (quello con la tabella delle risposte
+ *     e le colonne "Informazioni cronologiche", "Email", "Nome", "Che database usi?",
+ *     "Ho letto l'informativa privacy..."). Le colonne vengono riconosciute dal nome,
+ *     quindi l'ordine non conta, ma i nomi non vanno cambiati.
  *     Estensioni > Apps Script. Cancella il codice di esempio e incolla tutto questo file.
  *  3. Impostazioni progetto (icona ingranaggio) > Proprietà script > Aggiungi:
  *     proprietà RESEND_API_KEY, valore = la chiave copiata al punto 1.
  *     La chiave NON va scritta in questo file (che è pubblico nel repository del sito).
  *  4. Esegui > seleziona la funzione "test" > Esegui. Google chiede le autorizzazioni
  *     (foglio + connessione a servizi esterni): accetta. Deve arrivare un'email di
- *     prova a info@dblast.it e comparire una riga nel foglio "Iscrizioni sito"
+ *     prova a info@dblast.it e comparire una riga "Prova" in fondo alla tabella
  *     (poi cancellala).
  *  5. Esegui il deployment > Nuovo deployment > tipo "App web".
  *     - Esegui come: Me
@@ -44,10 +47,14 @@ var FROM = 'DBlast <noreply@dblast.it>';
 // "rispondi a" info@dblast.it.
 var SEND_CONFIRMATION = false;
 
-// Nome del foglio (tab) in cui salvare le iscrizioni. Se non esiste viene creato.
-var SHEET_NAME = 'Iscrizioni sito';
-
-var HEADERS = ['Data', 'Nome', 'Email', 'Database', 'Altro database', 'Età 14+', 'Consenso'];
+// Colonne della tabella, riconosciute dall'inizio dell'intestazione.
+var COLUMNS = {
+  data: 'Informazioni cronologiche',
+  email: 'Email',
+  nome: 'Nome',
+  database: 'Che database usi',
+  consenso: 'Ho letto'
+};
 
 function doPost(e) {
   var p = e.parameter || {};
@@ -59,8 +66,10 @@ function doPost(e) {
 
   var nome = clean(p.nome, 100);
   var email = clean(p.email, 200).toLowerCase();
-  var databases = (e.parameters.database || []).map(function (d) { return clean(d, 50); }).join(', ');
+  var databases = (e.parameters.database || []).map(function (d) { return clean(d, 50); });
   var altro = clean(p.altro, 200);
+  if (altro) databases.push('Altro: ' + altro);
+  databases = databases.join(', ');
 
   if (!nome) return reply(ajax, false, 'Inserisci il tuo nome.');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return reply(ajax, false, 'Controlla l\'indirizzo email.');
@@ -70,8 +79,13 @@ function doPost(e) {
   var lock = LockService.getScriptLock();
   lock.waitLock(10000);
   try {
-    var sheet = getSheet();
-    sheet.appendRow([new Date(), cell(nome), cell(email), cell(databases), cell(altro), 'sì', 'sì']);
+    appendSignup({
+      data: new Date(),
+      email: cell(email),
+      nome: cell(nome),
+      database: cell(databases),
+      consenso: 'Sì (almeno 14 anni)'
+    });
   } finally {
     lock.releaseLock();
   }
@@ -86,8 +100,7 @@ function doPost(e) {
       text: 'Nuova iscrizione dal sito.\n\n' +
         'Nome: ' + nome + '\n' +
         'Email: ' + email + '\n' +
-        'Database: ' + (databases || '-') + '\n' +
-        'Altro: ' + (altro || '-') + '\n'
+        'Database: ' + (databases || '-') + '\n'
     });
 
     if (SEND_CONFIRMATION) {
@@ -125,15 +138,38 @@ function sendEmail(message) {
   }
 }
 
-function getSheet() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName(SHEET_NAME);
-  if (!sheet) {
-    sheet = ss.insertSheet(SHEET_NAME);
-    sheet.appendRow(HEADERS);
-    sheet.setFrozenRows(1);
+// Cerca, tra i fogli del file, la riga di intestazione con le colonne di COLUMNS
+// e aggiunge l'iscrizione sotto l'ultima riga compilata.
+function appendSignup(values) {
+  var sheets = SpreadsheetApp.getActiveSpreadsheet().getSheets();
+  for (var i = 0; i < sheets.length; i++) {
+    var sheet = sheets[i];
+    var lastCol = sheet.getLastColumn();
+    if (!lastCol) continue;
+    var top = sheet.getRange(1, 1, Math.min(5, sheet.getMaxRows()), lastCol).getDisplayValues();
+    for (var r = 0; r < top.length; r++) {
+      var index = findColumns(top[r]);
+      if (!index) continue;
+      var row = new Array(lastCol).fill('');
+      Object.keys(index).forEach(function (key) { row[index[key]] = values[key]; });
+      sheet.getRange(Math.max(sheet.getLastRow(), r + 1) + 1, 1, 1, lastCol).setValues([row]);
+      return;
+    }
   }
-  return sheet;
+  throw new Error('Non trovo la tabella delle iscrizioni: controlla i nomi delle colonne (COLUMNS).');
+}
+
+// Restituisce {chiave: indice colonna} se l'intestazione contiene tutte le colonne, altrimenti null.
+function findColumns(header) {
+  var index = {};
+  for (var key in COLUMNS) {
+    var col = header.findIndex(function (h) {
+      return String(h).trim().toLowerCase().indexOf(COLUMNS[key].toLowerCase()) === 0;
+    });
+    if (col < 0) return null;
+    index[key] = col;
+  }
+  return index;
 }
 
 function clean(value, max) {
