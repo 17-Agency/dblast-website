@@ -129,3 +129,22 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 a.go{font-weight:600;text-decoration:none}
 a.go::after{content:" \2192"}
 a.go:hover{text-decoration:underline}
+
+/* modulo di iscrizione */
+.form{max-width:560px;display:grid;gap:20px}
+.field{display:grid;gap:8px;margin:0;padding:0;border:0;min-width:0}
+.field label,.field legend{font-weight:600}
+.field legend{padding:0;margin-bottom:8px}
+.opt{font-weight:400;color:var(--muted)}
+.form input[type=text],.form input[type=email]{width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg-2);color:var(--text);font:inherit}
+.form input[type=text]:focus-visible,.form input[type=email]:focus-visible{outline:2px solid var(--brand-2);outline-offset:1px;border-color:transparent}
+.form ::placeholder{color:var(--muted);opacity:.7}
+.checks{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:6px}
+.check,.field .check{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:.98rem;font-weight:400}
+.check input{margin-top:.35em;accent-color:var(--brand);flex:none}
+.sub-label{font-weight:400 !important;color:var(--muted);font-size:.95rem}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+button.btn{border:0;font:inherit;font-weight:600;cursor:pointer}
+button.btn:disabled{opacity:.6;cursor:wait}
+.form-status{margin:0;color:var(--muted);min-height:1.65em}
+.form-status.error{color:var(--danger)}
