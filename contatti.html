@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; object-src 'none'; base-uri 'none'; form-action https://script.google.com">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Contatti e supporto - DBlast</title>
-<meta name="description" content="Supporto per DBlast, segnalazione di bug, richieste di collaborazione e contatto generale: scrivici via email.">
+<meta name="description" content="Supporto per DBlast, segnalazione di bug, richieste di collaborazione e contatto generale: scrivici con il modulo di contatto.">
 <meta name="theme-color" content="#0b0c14">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://www.dblast.it/contatti">
@@ -17,7 +17,8 @@
 <meta property="og:image" content="https://www.dblast.it/assets/risk.png">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
+<script src="assets/form.js?v=3" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Vai al contenuto</a>
@@ -39,78 +40,102 @@
 </header>
 
 <main id="main">
-  <!-- Indirizzi email: support@dblast.it (supporto), info@dblast.it (collaborazioni e contatto generale). -->
-  <section class="page-hero">
-    <div class="wrap">
-      <h1>Supporto e contatti.</h1>
-      <p class="lead">Scrivici via email per supporto, segnalazioni di bug o collaborazioni, oppure per una domanda generale.</p>
-    </div>
-  </section>
-
-  <section id="supporto">
-    <div class="wrap">
-      <h2>Scrivici per il supporto</h2>
-      <div class="prose">
-        <p>Per supporto o segnalazioni scrivi a <a href="mailto:support@dblast.it?subject=%5BDBlast%5D%20Supporto">support@dblast.it</a>. Per aiutarci a capire il problema indica la versione di DBlast, il sistema operativo, cosa stavi facendo, il messaggio di errore esatto ed eventualmente uno screenshot.</p>
+  <section class="form-page">
+    <div class="wrap fp-grid">
+      <div class="fp-head">
+        <span class="eyebrow">Contatti</span>
+        <h1>Scrivici.</h1>
+        <p class="lead">Supporto, segnalazioni di bug, un progetto da proporci o una semplice domanda: compila il modulo e il messaggio arriva direttamente al team.</p>
       </div>
-      <div class="mail" aria-label="Esempio di email di supporto">
-        <p class="mail-label">Esempio di email</p>
-        <dl>
-          <dt>A</dt><dd>support@dblast.it</dd>
-          <dt>Oggetto</dt><dd>[DBlast] Supporto: errore durante la connessione al database</dd>
-        </dl>
-        <pre>Ciao,
 
-versione di DBlast: [versione]
-sistema operativo: [sistema operativo]
-database: [PostgreSQL / Oracle, versione]
+      <div class="form-card">
+        <!-- action: URL della web app Apps Script (vedi apps-script/Code.gs). -->
+        <form id="contatto" class="form js-form" data-success="contatto-ok" action="https://script.google.com/macros/s/AKfycbxqJYHl5zLSJno-olElIdZEjpVlRGEvCN_8PhsciS1CaFlnGOhCzp8UIk8LhitUS1yg/exec" method="post" accept-charset="utf-8">
+          <input type="hidden" name="form" value="contatto">
+          <div class="form-head">
+            <h2>Invia un messaggio</h2>
+            <p>Ti rispondiamo all'indirizzo email che ci lasci.</p>
+          </div>
 
-Cosa stavo facendo:
-[descrizione dei passaggi]
+          <fieldset class="field">
+            <legend>Di cosa si tratta?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="tipo" value="supporto" required data-missing="Scegli di cosa si tratta." aria-describedby="err-tipo"><span>Supporto o bug</span></label>
+              <label class="chip"><input type="radio" name="tipo" value="collaborazione"><span>Progetto o collaborazione</span></label>
+              <label class="chip"><input type="radio" name="tipo" value="altro"><span>Altro</span></label>
+            </div>
+            <p class="field-error" id="err-tipo"></p>
+          </fieldset>
 
-Messaggio di errore esatto:
-[testo dell'errore]
+          <div class="field">
+            <label for="c-nome">Nome</label>
+            <input id="c-nome" name="nome" type="text" autocomplete="name" maxlength="100" placeholder="Come ti chiami?" required data-missing="Scrivi il tuo nome." aria-describedby="err-nome">
+            <p class="field-error" id="err-nome"></p>
+          </div>
 
-Allego uno screenshot: [sì / no]
+          <div class="field">
+            <label for="c-email">Email</label>
+            <input id="c-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="200" placeholder="nome@esempio.it" required data-missing="Scrivi la tua email, così possiamo risponderti." data-invalid="Questa email non sembra valida." aria-describedby="err-email">
+            <p class="field-error" id="err-email"></p>
+          </div>
 
-Grazie,
-[nome]</pre>
+          <div class="support-extra">
+            <p>Per il supporto ci aiutano questi dettagli (facoltativi).</p>
+            <div class="form-row">
+              <div class="field">
+                <label for="c-versione">Versione di DBlast</label>
+                <input id="c-versione" name="versione" type="text" maxlength="50" placeholder="Es. 0.4.1">
+              </div>
+              <div class="field">
+                <label for="c-os">Sistema operativo</label>
+                <input id="c-os" name="sistema" type="text" maxlength="80" placeholder="Es. Windows 11">
+              </div>
+            </div>
+            <div class="field">
+              <label for="c-db">Database</label>
+              <input id="c-db" name="database" type="text" maxlength="100" placeholder="Es. PostgreSQL 16">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="c-messaggio">Messaggio</label>
+            <textarea id="c-messaggio" name="messaggio" rows="6" maxlength="5000" placeholder="Raccontaci di cosa hai bisogno. Per un errore, indica cosa stavi facendo e il messaggio esatto." required data-missing="Scrivi il tuo messaggio." aria-describedby="err-messaggio"></textarea>
+            <p class="field-error" id="err-messaggio"></p>
+          </div>
+
+          <div class="hp" aria-hidden="true">
+            <label for="c-sito">Lascia vuoto questo campo</label>
+            <input id="c-sito" name="sito" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button class="btn btn-submit" type="submit"><span>Invia messaggio</span></button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+          <p class="form-note">Usiamo i dati che ci invii solo per risponderti, come descritto nell'<a href="privacy">informativa privacy</a>.</p>
+        </form>
+
+        <div id="contatto-ok" class="form-success" tabindex="-1" hidden>
+          <div class="ok-icon" aria-hidden="true"></div>
+          <h2>Messaggio inviato.</h2>
+          <p>Grazie, ti risponderemo all'indirizzo email che ci hai lasciato.</p>
+          <button class="btn ghost" type="button" data-again>Invia un altro messaggio</button>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <section id="collaborazioni" class="alt">
-    <div class="wrap">
-      <h2>Progetti e collaborazioni</h2>
-      <div class="prose">
-        <p>Hai un problema vicino alle aree descritte in <a href="servizi">Servizi</a>? Scrivici due righe: di che si tratta, in che contesto e che cosa ti serve. Valutiamo insieme se possiamo aiutarti. Nessun impegno.</p>
-      </div>
-      <div class="mail" aria-label="Esempio di email di collaborazione">
-        <p class="mail-label">Esempio di email</p>
-        <dl>
-          <dt>A</dt><dd>info@dblast.it</dd>
-          <dt>Oggetto</dt><dd>Progetto / collaborazione: [tema in breve]</dd>
-        </dl>
-        <pre>Ciao,
-
-chi siamo: [nome, ruolo o realtà, contesto]
-problema: [cosa ti serve e dove si inceppa]
-tempistiche indicative: [entro quando, se c'è una scadenza]
-
-Grazie,
-[nome]</pre>
-      </div>
-      <div class="cta" style="margin-top:20px">
-        <a class="btn" href="mailto:info@dblast.it?subject=Richiesta%20di%20collaborazione">Scrivi a info@dblast.it</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="generale">
-    <div class="wrap">
-      <h2>Contatto generale</h2>
-      <div class="prose">
-        <p>Per domande, curiosità o altro che non rientra nelle sezioni sopra, scrivi a <a href="mailto:info@dblast.it?subject=Contatto%20dal%20sito">info@dblast.it</a>.</p>
+      <div class="fp-more">
+        <div class="side-info">
+          <div>
+            <h3>Supporto e bug</h3>
+            <p>Più dettagli ci dai, prima capiamo il problema: versione di DBlast, sistema operativo, cosa stavi facendo e il messaggio di errore esatto. Se serve uno screenshot, te lo chiediamo nella risposta.</p>
+          </div>
+          <div>
+            <h3>Progetti e collaborazioni</h3>
+            <p>Hai un problema vicino alle aree descritte in <a href="servizi">Servizi</a>? Scrivici di che si tratta, in che contesto e che cosa ti serve. Valutiamo insieme se possiamo aiutarti.</p>
+          </div>
+          <div>
+            <h3>Preferisci l'email?</h3>
+            <p>Scrivi a <a href="mailto:support@dblast.it">support@dblast.it</a> per il supporto o a <a href="mailto:info@dblast.it">info@dblast.it</a> per tutto il resto.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

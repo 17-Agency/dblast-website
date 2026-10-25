@@ -17,8 +17,8 @@
 <meta property="og:image" content="https://www.dblast.it/assets/risk.png">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="style.css?v=2">
-<script src="assets/iscrizione.js?v=2" defer></script>
+<link rel="stylesheet" href="style.css?v=3">
+<script src="assets/form.js?v=3" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Vai al contenuto</a>
@@ -40,17 +40,18 @@
 </header>
 
 <main id="main">
-  <section class="signup">
-    <div class="wrap signup-grid">
-      <div class="signup-head">
+  <section class="form-page">
+    <div class="wrap fp-grid">
+      <div class="fp-head">
         <span class="eyebrow">Closed beta</span>
         <h1>Prova DBlast <em>prima di tutti</em>.</h1>
         <p class="lead">Stiamo preparando la prima versione da provare. Lasciaci il tuo contatto: ti scriviamo appena è pronta.</p>
       </div>
 
-      <div class="signup-card">
+      <div class="form-card">
         <!-- action: URL della web app Apps Script (vedi apps-script/Code.gs). -->
-        <form id="iscrizione" class="form" action="https://script.google.com/macros/s/AKfycbxqJYHl5zLSJno-olElIdZEjpVlRGEvCN_8PhsciS1CaFlnGOhCzp8UIk8LhitUS1yg/exec" method="post" accept-charset="utf-8">
+        <form id="iscrizione" class="form js-form" data-redirect="grazie" action="https://script.google.com/macros/s/AKfycbxqJYHl5zLSJno-olElIdZEjpVlRGEvCN_8PhsciS1CaFlnGOhCzp8UIk8LhitUS1yg/exec" method="post" accept-charset="utf-8">
+          <input type="hidden" name="form" value="iscrizione">
           <div class="form-head">
             <h2>Iscriviti alla beta</h2>
             <p>Ci vuole meno di un minuto.</p>
@@ -58,13 +59,13 @@
 
           <div class="field">
             <label for="nome">Nome</label>
-            <input id="nome" name="nome" type="text" autocomplete="name" maxlength="100" placeholder="Come ti chiami?" required aria-describedby="err-nome">
+            <input id="nome" name="nome" type="text" autocomplete="name" maxlength="100" placeholder="Come ti chiami?" required data-missing="Scrivi il tuo nome." aria-describedby="err-nome">
             <p class="field-error" id="err-nome"></p>
           </div>
 
           <div class="field">
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="200" placeholder="nome@esempio.it" required aria-describedby="err-email">
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="200" placeholder="nome@esempio.it" required data-missing="Scrivi la tua email." data-invalid="Questa email non sembra valida." aria-describedby="err-email">
             <p class="field-error" id="err-email"></p>
           </div>
 
@@ -88,31 +89,27 @@
 
           <div class="consents">
             <div class="field">
-              <label class="tick"><input type="checkbox" name="eta" value="si" required aria-describedby="err-eta"><span>Ho almeno 14 anni.</span></label>
+              <label class="tick"><input type="checkbox" name="eta" value="si" required data-missing="Per iscriverti devi avere almeno 14 anni." aria-describedby="err-eta"><span>Ho almeno 14 anni.</span></label>
               <p class="field-error" id="err-eta"></p>
             </div>
             <div class="field">
-              <label class="tick"><input type="checkbox" name="consenso" value="si" required aria-describedby="err-consenso"><span>Acconsento a ricevere email sulla closed beta di DBlast, come descritto nell'<a href="privacy">informativa privacy</a>.</span></label>
+              <label class="tick"><input type="checkbox" name="consenso" value="si" required data-missing="Ci serve il tuo consenso per poterti scrivere." aria-describedby="err-consenso"><span>Acconsento a ricevere email sulla closed beta di DBlast, come descritto nell'<a href="privacy">informativa privacy</a>.</span></label>
               <p class="field-error" id="err-consenso"></p>
             </div>
           </div>
 
           <button class="btn btn-submit" type="submit"><span>Iscriviti alla beta</span></button>
-          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+          <p class="form-status" role="status" aria-live="polite"></p>
+          <p class="form-note">Ti scriviamo solo per la beta. Puoi chiedere la cancellazione dei tuoi dati in qualsiasi momento.</p>
         </form>
       </div>
 
-      <div class="signup-more">
+      <div class="fp-more">
         <ol class="signup-steps">
           <li><b>Ti iscrivi</b><span>Nome ed email, nient'altro di obbligatorio.</span></li>
           <li><b>Ti invitiamo</b><span>Appena la prima versione è pronta ti scriviamo con le istruzioni per provarla.</span></li>
           <li><b>Ci dici cosa ne pensi</b><span>Le tue segnalazioni decidono cosa sistemiamo e quali database supportiamo per primi.</span></li>
         </ol>
-        <ul class="promise">
-          <li>Niente newsletter né pubblicità</li>
-          <li>Non cediamo i tuoi dati a nessuno</li>
-          <li>Puoi chiederne la cancellazione quando vuoi</li>
-        </ul>
       </div>
     </div>
   </section>
