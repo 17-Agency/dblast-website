@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; object-src 'none'; base-uri 'none'; form-action https://script.google.com">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Iscriviti alla beta - DBlast</title>
+<meta name="description" content="Iscriviti alla closed beta di DBlast: ti scriviamo appena la prima versione è pronta da provare.">
+<meta name="theme-color" content="#0b0c14">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.dblast.it/iscrizione">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Iscriviti alla beta - DBlast">
+<meta property="og:description" content="Iscriviti alla closed beta di DBlast e provalo tra i primi.">
+<meta property="og:url" content="https://www.dblast.it/iscrizione">
+<meta property="og:image" content="https://www.dblast.it/assets/risk.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
+<script src="assets/iscrizione.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="assets/logo.png" alt="DBlast - Home" width="142" height="36"></a>
+    <nav aria-label="Principale">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="prodotti">Prodotti</a></li>
+        <li><a href="tecnologia">Tecnologia</a></li>
+        <li><a href="servizi">Servizi</a></li>
+        <li><a href="chi-siamo">Chi siamo</a></li>
+        <li><a href="contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <h1>Iscriviti alla beta.</h1>
+      <p class="lead">Lasciaci nome ed email: ti scriviamo appena la prima versione di DBlast è pronta da provare. Niente newsletter, niente pubblicità.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <!-- action: URL della web app Apps Script (vedi apps-script/Code.gs). -->
+      <form id="iscrizione" class="form" action="https://script.google.com/macros/s/INCOLLA_QUI_ID_DEPLOYMENT/exec" method="post" accept-charset="utf-8">
+        <div class="field">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" autocomplete="name" maxlength="100" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" maxlength="200" required>
+        </div>
+        <fieldset class="field">
+          <legend>Quali database usi? <span class="opt">(facoltativo)</span></legend>
+          <div class="checks">
+            <label class="check"><input type="checkbox" name="database" value="PostgreSQL"> <span>PostgreSQL</span></label>
+            <label class="check"><input type="checkbox" name="database" value="Oracle"> <span>Oracle</span></label>
+            <label class="check"><input type="checkbox" name="database" value="Db2"> <span>Db2</span></label>
+            <label class="check"><input type="checkbox" name="database" value="MySQL / MariaDB"> <span>MySQL / MariaDB</span></label>
+            <label class="check"><input type="checkbox" name="database" value="SQL Server"> <span>SQL Server</span></label>
+          </div>
+          <label for="altro" class="sub-label">Altro</label>
+          <input id="altro" name="altro" type="text" maxlength="200" placeholder="Es. SQLite, Snowflake...">
+        </fieldset>
+        <div class="hp" aria-hidden="true">
+          <label for="sito">Lascia vuoto questo campo</label>
+          <input id="sito" name="sito" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <label class="check"><input type="checkbox" name="eta" value="si" required> <span>Ho almeno 14 anni.</span></label>
+        <label class="check"><input type="checkbox" name="consenso" value="si" required> <span>Acconsento al trattamento dei miei dati per ricevere comunicazioni sulla closed beta di DBlast, come descritto nell'<a href="privacy">informativa privacy</a>.</span></label>
+        <div class="cta">
+          <button class="btn" type="submit">Iscriviti</button>
+        </div>
+        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 DBlast · Progetto indipendente</span>
+    <a href="privacy">Privacy</a>
+  </div>
+</footer>
+</body>
+</html>
