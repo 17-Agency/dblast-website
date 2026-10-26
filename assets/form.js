@@ -101,7 +101,7 @@
   function preselect() {
     var topic = topics[location.hash.slice(1)];
     var radio = topic && document.querySelector('input[name=tipo][value="' + topic + '"]');
-    if (radio) radio.checked = true;
+    if (radio && !radio.disabled) radio.checked = true;
   }
   preselect();
   window.addEventListener('hashchange', preselect);
