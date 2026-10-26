@@ -3,7 +3,7 @@
  *  - iscrizione alla beta (/iscrizione): salva l'iscrizione nel foglio Google e
  *    manda un'email di notifica a info@dblast.it;
  *  - modulo di contatto (/contatti): non salva nulla, inoltra il messaggio via email
- *    a support@dblast.it (supporto) o a info@dblast.it (tutto il resto).
+ *    a supporto@dblast.it (supporto) o a info@dblast.it (tutto il resto).
  *
  * Le email NON partono dall'account Google che ospita il foglio: le invia
  * Resend (resend.com) da noreply@dblast.it. L'account Google serve solo
@@ -46,7 +46,7 @@ var NOTIFY_TO = ['info@dblast.it'];
 
 // Argomenti del modulo di contatto: etichetta nell'oggetto dell'email e destinatari.
 var TOPICS = {
-  supporto: { label: 'Supporto', to: ['support@dblast.it'] },
+  supporto: { label: 'Supporto', to: ['supporto@dblast.it'] },
   collaborazione: { label: 'Progetto / collaborazione', to: ['info@dblast.it'] },
   altro: { label: 'Contatto generale', to: ['info@dblast.it'] }
 };
@@ -252,7 +252,7 @@ function reply(ajax, ok, error, okHtml) {
 }
 
 // Prova del modulo di contatto dall'editor (Esegui > testContatto):
-// arriva un messaggio di prova a support@dblast.it.
+// arriva un messaggio di prova a supporto@dblast.it.
 function testContatto() {
   var res = doContact({
     tipo: 'supporto', nome: 'Prova', email: 'prova@example.com', versione: '0.1', sistema: 'Windows 11',
