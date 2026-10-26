@@ -17,8 +17,8 @@
 <meta property="og:image" content="https://www.dblast.it/assets/risk.png">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="style.css?v=3">
-<script src="assets/form.js?v=3" defer></script>
+<link rel="stylesheet" href="style.css?v=4">
+<script src="assets/form.js?v=4" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Vai al contenuto</a>
@@ -59,8 +59,9 @@
           <fieldset class="field">
             <legend>Di cosa si tratta?</legend>
             <div class="chips">
-              <label class="chip"><input type="radio" name="tipo" value="supporto" required data-missing="Scegli di cosa si tratta." aria-describedby="err-tipo"><span>Supporto o bug</span></label>
-              <label class="chip"><input type="radio" name="tipo" value="collaborazione"><span>Progetto o collaborazione</span></label>
+              <!-- Supporto disattivato finché non c'è una versione pubblica: per riattivarlo togli disabled. -->
+              <label class="chip"><input type="radio" name="tipo" value="supporto" disabled><span>Supporto o bug</span></label>
+              <label class="chip"><input type="radio" name="tipo" value="collaborazione" required data-missing="Scegli di cosa si tratta." aria-describedby="err-tipo"><span>Progetto o collaborazione</span></label>
               <label class="chip"><input type="radio" name="tipo" value="altro"><span>Altro</span></label>
             </div>
             <p class="field-error" id="err-tipo"></p>
