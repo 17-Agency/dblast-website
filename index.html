@@ -39,16 +39,40 @@
       "name": "DBlast",
       "url": "https://www.dblast.it/",
       "logo": "https://www.dblast.it/assets/logo-color.png",
-      "email": "info@dblast.it"
+      "email": "info@dblast.it",
+      "sameAs": ["https://www.linkedin.com/company/dblast"]
     },
     {
       "@type": "SoftwareApplication",
+      "@id": "https://www.dblast.it/#software",
       "name": "DBlast",
       "url": "https://www.dblast.it/",
       "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Analisi d'impatto delle modifiche allo schema di database",
       "description": "DBlast mostra lo schema di un database come grafo e stima l'impatto di una modifica DDL prima di eseguirla.",
+      "featureList": [
+        "Schema del database come grafo navigabile di tabelle e chiavi esterne",
+        "Raggruppamento automatico delle tabelle con community detection",
+        "Simulazione di modifiche DDL con punteggio di rischio e passi consigliati",
+        "Check dello schema: nomi poco chiari, duplicazioni, forme normali",
+        "Supporto per PostgreSQL, Oracle e Db2 for LUW"
+      ],
+      "inLanguage": ["it", "en"],
       "image": "https://www.dblast.it/assets/risk.png",
       "publisher": {"@id": "https://www.dblast.it/#organization"}
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.dblast.it/#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "Cos'è DBlast?", "acceptedAnswer": {"@type": "Answer", "text": "DBlast è un'app desktop per l'analisi d'impatto delle modifiche allo schema di un database relazionale. Mostra lo schema come un grafo di tabelle e chiavi esterne e, prima che tu esegua una modifica DDL, stima cosa si rompe con un punteggio di rischio e i passi consigliati."}},
+        {"@type": "Question", "name": "Quali database supporta DBlast?", "acceptedAnswer": {"@type": "Answer", "text": "PostgreSQL, Oracle e Db2 for LUW. Per ora DBlast supporta solo database relazionali: i database documentali e non relazionali sono fuori dal perimetro attuale."}},
+        {"@type": "Question", "name": "Quali modifiche può simulare?", "acceptedAnswer": {"@type": "Answer", "text": "DROP TABLE, DROP COLUMN, cambio di tipo, rinomina, nuova chiave esterna, cambio di chiave primaria e di nullabilità. Il report elenca i problemi potenziali, gli effetti automatici e lo script SQL della modifica, con un punteggio di rischio e i passi consigliati. Segnala anche le routine che usano una colonna modificata."}},
+        {"@type": "Question", "name": "DBlast modifica i miei dati?", "acceptedAnswer": {"@type": "Answer", "text": "No. DBlast lavora sui metadati dello schema: le simulazioni non eseguono nulla sul database. Il rischio strutturale è calcolato in modo deterministico."}},
+        {"@type": "Question", "name": "In cosa è diverso da Flyway o Liquibase?", "acceptedAnswer": {"@type": "Answer", "text": "Flyway e Liquibase applicano e versionano le migrazioni. DBlast non esegue migrazioni: ti dice prima cosa una modifica rischia di rompere, così puoi valutarla prima di scriverla e applicarla con lo strumento che usi già."}},
+        {"@type": "Question", "name": "A chi serve DBlast?", "acceptedAnswer": {"@type": "Answer", "text": "A sviluppatori, DBA e team che lavorano su database cresciuti negli anni, in cui nessuno ricorda più cosa dipende da cosa."}},
+        {"@type": "Question", "name": "DBlast è già disponibile?", "acceptedAnswer": {"@type": "Answer", "text": "Non ancora: DBlast è in sviluppo e l'app non è scaricabile. Puoi iscriverti alla beta per sapere quando potrai provarla."}}
+      ]
     }
   ]
 }
@@ -160,7 +184,23 @@
     </div>
   </section>
 
-  <section>
+  <section id="domande">
+    <div class="wrap">
+      <h2>Domande frequenti</h2>
+      <p class="sub">Le risposte rapide su cosa fa DBlast e a che punto è.</p>
+      <div class="cards two">
+        <article class="card"><h3>Cos'è DBlast?</h3><p>DBlast è un'app desktop per l'analisi d'impatto delle modifiche allo schema di un database relazionale. Mostra lo schema come un grafo di tabelle e chiavi esterne e, prima che tu esegua una modifica DDL, stima cosa si rompe con un punteggio di rischio e i passi consigliati.</p></article>
+        <article class="card"><h3>Quali database supporta DBlast?</h3><p>PostgreSQL, Oracle e Db2 for LUW. Per ora DBlast supporta solo database relazionali: i database documentali e non relazionali sono fuori dal perimetro attuale.</p></article>
+        <article class="card"><h3>Quali modifiche può simulare?</h3><p>DROP TABLE, DROP COLUMN, cambio di tipo, rinomina, nuova chiave esterna, cambio di chiave primaria e di nullabilità. Il report elenca i problemi potenziali, gli effetti automatici e lo script SQL della modifica, con un punteggio di rischio e i passi consigliati. Segnala anche le routine che usano una colonna modificata.</p></article>
+        <article class="card"><h3>DBlast modifica i miei dati?</h3><p>No. DBlast lavora sui metadati dello schema: le simulazioni non eseguono nulla sul database. Il rischio strutturale è calcolato in modo deterministico.</p></article>
+        <article class="card"><h3>In cosa è diverso da Flyway o Liquibase?</h3><p>Flyway e Liquibase applicano e versionano le migrazioni. DBlast non esegue migrazioni: ti dice prima cosa una modifica rischia di rompere, così puoi valutarla prima di scriverla e applicarla con lo strumento che usi già.</p></article>
+        <article class="card"><h3>A chi serve DBlast?</h3><p>A sviluppatori, DBA e team che lavorano su database cresciuti negli anni, in cui nessuno ricorda più cosa dipende da cosa.</p></article>
+        <article class="card"><h3>DBlast è già disponibile?</h3><p>Non ancora: DBlast è in sviluppo e l'app non è scaricabile. Puoi <a href="iscrizione">iscriverti alla beta</a> per sapere quando potrai provarla.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
     <div class="wrap">
       <h2>Scopri di più</h2>
       <div class="teasers" style="margin-top:28px">

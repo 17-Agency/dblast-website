@@ -1,0 +1,31 @@
+# DBlast
+
+> DBlast is a desktop app for impact analysis of database schema changes. It shows a relational database schema as a graph of tables and foreign keys and, before you run a DDL change, estimates what will break, with a risk score and recommended next steps. It supports PostgreSQL, Oracle and Db2 for LUW. It is in development and not yet available for download; a closed beta sign-up is open.
+
+The website is in Italian. The app is available in Italian and English.
+
+Key facts:
+
+- Category: developer tool, database schema change impact analysis.
+- Supported databases: PostgreSQL, Oracle, Db2 for LUW. Relational databases only for now.
+- Simulated changes: DROP TABLE, DROP COLUMN, type change, rename, new foreign key, primary key change, nullability change.
+- Simulation report: potential problems, automatic side effects, the SQL script of the change, a risk score and recommended steps. It also flags routines that use a changed column.
+- Schema check: flags unclear names, duplication and normal-form violations, kept separate from structural risks.
+- Safety: DBlast works on schema metadata only. Simulations never execute anything on the database. Structural risk is computed deterministically.
+- Compared to Flyway or Liquibase: those tools apply and version migrations. DBlast does not run migrations; it tells you beforehand what a change is likely to break.
+- Audience: developers, DBAs and teams working on databases that have grown over years.
+- Status: in active development, latest version v0.2.2-alpha.1 (22 October 2026). Not yet downloadable.
+- Made by: an independent team of four developers.
+
+## Pages
+
+- [Home](https://www.dblast.it/): what DBlast does, how it works, FAQ
+- [Prodotti](https://www.dblast.it/prodotti): features and screenshots
+- [Tecnologia](https://www.dblast.it/tecnologia): supported DDL changes, architecture and tech stack
+- [Iscrizione](https://www.dblast.it/iscrizione): closed beta sign-up
+
+## Optional
+
+- [Servizi](https://www.dblast.it/servizi): custom software, AI and database consulting by the same team
+- [Chi siamo](https://www.dblast.it/chi-siamo): the team
+- [Contatti](https://www.dblast.it/contatti): contact form; email info@dblast.it
